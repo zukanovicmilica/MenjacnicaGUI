@@ -189,8 +189,14 @@ public class MenjacnicaGUI extends JFrame {
 		});
 		popupMenu_1.add(mntmDodajKurs_1);
 
-		JMenuItem mntmIzbriiKurs_1 = new JMenuItem("Izbri\u0161i kurs");
-		popupMenu_1.add(mntmIzbriiKurs_1);
+		JMenuItem mntmObrisiKurs_1 = new JMenuItem("Obrisi kurs");
+		mntmObrisiKurs_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ObrisiKursGUI okg = new ObrisiKursGUI();
+				okg.setVisible(true);
+			}
+		});
+		popupMenu_1.add(mntmObrisiKurs_1);
 
 		JMenuItem mntmIzvriZamenu_1 = new JMenuItem("Izvr\u0161i zamenu");
 		popupMenu_1.add(mntmIzvriZamenu_1);
@@ -211,6 +217,12 @@ public class MenjacnicaGUI extends JFrame {
 		panel.add(btnDodajKurs);
 
 		JButton btnObriiKurs = new JButton("Obri\u0161i kurs");
+		btnObriiKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ObrisiKursGUI okg = new ObrisiKursGUI();
+				okg.setVisible(true);
+			}
+		});
 		btnObriiKurs.setPreferredSize(new Dimension(110, 23));
 		panel.add(btnObriiKurs);
 

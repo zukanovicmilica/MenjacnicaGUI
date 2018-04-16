@@ -29,7 +29,7 @@ public class DodajKursGUI extends JFrame {
 	public DodajKursGUI() {
 		setResizable(false);
 		setTitle("Dodaj kurs");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 343, 251);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -94,6 +94,7 @@ public class DodajKursGUI extends JFrame {
 		btnDodaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String s= "Sifra: "+textFieldSifra.getText()+" Naziv: "+textFieldNaziv.getText()+" Skraceni naziv: "+textFieldSkraceniNaziv.getText()+" Prodajni kurs: "+textFieldProdajni.getText()+" Kupovni kurs: "+textFieldKupovni.getText()+" Srednji kurs: "+textFieldSrednji.getText();
+				dispose();
 			}
 		});
 		btnDodaj.setBounds(10, 191, 142, 23);
