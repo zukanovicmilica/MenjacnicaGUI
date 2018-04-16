@@ -45,6 +45,8 @@ public class MenjacnicaGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	
+	private MenjacnicaGUI menj;
 
 	/**
 	 * Launch the application.
@@ -179,6 +181,12 @@ public class MenjacnicaGUI extends JFrame {
 		addPopup(table, popupMenu_1);
 
 		JMenuItem mntmDodajKurs_1 = new JMenuItem("Dodaj kurs");
+		mntmDodajKurs_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DodajKursGUI dkg = new DodajKursGUI();
+				dkg.setVisible(true);
+			}
+		});
 		popupMenu_1.add(mntmDodajKurs_1);
 
 		JMenuItem mntmIzbriiKurs_1 = new JMenuItem("Izbri\u0161i kurs");
@@ -193,6 +201,12 @@ public class MenjacnicaGUI extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton btnDodajKurs = new JButton("Dodaj kurs");
+		btnDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DodajKursGUI dkg = new DodajKursGUI();
+				dkg.setVisible(true);
+			}
+		});
 		btnDodajKurs.setPreferredSize(new Dimension(110, 23));
 		panel.add(btnDodajKurs);
 
