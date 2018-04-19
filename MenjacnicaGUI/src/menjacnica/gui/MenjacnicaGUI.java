@@ -24,6 +24,8 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 
 import javax.swing.JTextArea;
@@ -45,8 +47,8 @@ public class MenjacnicaGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	
-	private MenjacnicaGUI menj;
+	public JTextArea textAreaStatus;
+	MenjacnicaGUI menj=this;
 
 	/**
 	 * Launch the application.
@@ -68,6 +70,13 @@ public class MenjacnicaGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MenjacnicaGUI() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+					izlaz();
+			}
+			
+		});
 		setTitle("Menja\u010Dnica");
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(MenjacnicaGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
@@ -78,15 +87,15 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(new TitledBorder(null, "STATUS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setPreferredSize(new Dimension(2, 50));
 		contentPane.add(scrollPane_1, BorderLayout.SOUTH);
 
-		JTextArea textArea = new JTextArea();
-		scrollPane_1.setViewportView(textArea);
-		
+		JTextArea textAreaStatus = new JTextArea();
+		scrollPane_1.setViewportView(textAreaStatus);
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
@@ -102,7 +111,7 @@ public class MenjacnicaGUI extends JFrame {
 
 				if (opcija == JFileChooser.APPROVE_OPTION) {
 					File f = fc.getSelectedFile();
-					textArea.append("Ucitan fajl: "+f.getAbsolutePath());
+					textAreaStatus.append("Ucitan fajl: " + f.getAbsolutePath()+"\n");
 
 				}
 			}
@@ -121,7 +130,7 @@ public class MenjacnicaGUI extends JFrame {
 
 				if (opcija == JFileChooser.APPROVE_OPTION) {
 					File f = fc.getSelectedFile();
-					textArea.append("Sacuvan fajl: "+f.getAbsolutePath());
+					textAreaStatus.append("Sacuvan fajl: " + f.getAbsolutePath()+"\n");
 				}
 			}
 		});
@@ -145,7 +154,8 @@ public class MenjacnicaGUI extends JFrame {
 		JMenuItem mntmAbout = new JMenuItem("About");
 		mntmAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,"Aplikacija Menjacnica, autor Milica Zukanovic","O programu",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Aplikacija Menjacnica, autor Milica Zukanovic", "O programu",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		mnHelp.add(mntmAbout);
@@ -183,7 +193,7 @@ public class MenjacnicaGUI extends JFrame {
 		JMenuItem mntmDodajKurs_1 = new JMenuItem("Dodaj kurs");
 		mntmDodajKurs_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DodajKursGUI dkg = new DodajKursGUI();
+				DodajKursGUI dkg = new DodajKursGUI(menj);
 				dkg.setVisible(true);
 			}
 		});
@@ -192,14 +202,20 @@ public class MenjacnicaGUI extends JFrame {
 		JMenuItem mntmObrisiKurs_1 = new JMenuItem("Obrisi kurs");
 		mntmObrisiKurs_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ObrisiKursGUI okg = new ObrisiKursGUI();
+				ObrisiKursGUI okg = new ObrisiKursGUI(menj);
 				okg.setVisible(true);
 			}
 		});
 		popupMenu_1.add(mntmObrisiKurs_1);
 
-		JMenuItem mntmIzvriZamenu_1 = new JMenuItem("Izvr\u0161i zamenu");
-		popupMenu_1.add(mntmIzvriZamenu_1);
+		JMenuItem mntmIzvrsiZamenu = new JMenuItem("Izvr\u0161i zamenu");
+		mntmIzvrsiZamenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				IzvrsiZamenuGUI izg= new IzvrsiZamenuGUI(menj);
+				izg.setVisible(true);
+			}
+		});
+		popupMenu_1.add(mntmIzvrsiZamenu);
 
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(112, 10));
@@ -209,35 +225,47 @@ public class MenjacnicaGUI extends JFrame {
 		JButton btnDodajKurs = new JButton("Dodaj kurs");
 		btnDodajKurs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DodajKursGUI dkg = new DodajKursGUI();
+				DodajKursGUI dkg = new DodajKursGUI(menj);
 				dkg.setVisible(true);
 			}
 		});
 		btnDodajKurs.setPreferredSize(new Dimension(110, 23));
 		panel.add(btnDodajKurs);
 
-		JButton btnObriiKurs = new JButton("Obri\u0161i kurs");
-		btnObriiKurs.addActionListener(new ActionListener() {
+		JButton btnObrisiKurs = new JButton("Obri\u0161i kurs");
+		btnObrisiKurs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ObrisiKursGUI okg = new ObrisiKursGUI();
+				ObrisiKursGUI okg = new ObrisiKursGUI(menj);
 				okg.setVisible(true);
 			}
 		});
-		btnObriiKurs.setPreferredSize(new Dimension(110, 23));
-		panel.add(btnObriiKurs);
+		btnObrisiKurs.setPreferredSize(new Dimension(110, 23));
+		panel.add(btnObrisiKurs);
 
 		JButton btnIzvriZamenu = new JButton("Izvr\u0161i zamenu");
+		btnIzvriZamenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvrsiZamenuGUI izg = new IzvrsiZamenuGUI(menj);
+				izg.setVisible(true);
+			}
+		});
 		panel.add(btnIzvriZamenu);
+
 	}
 
+	private void addWindowListener(WindowAdapter windowAdapter) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	private void izlaz() {
- 		int opcija = JOptionPane.showConfirmDialog(null, "Da li zelite da izadjete?","Izlazak", JOptionPane.YES_NO_CANCEL_OPTION);
- 		
- 		if (opcija == JOptionPane.YES_OPTION)
- 			System.exit(0);
- 	}
-	
+		int opcija = JOptionPane.showConfirmDialog(null, "Da li zelite da izadjete?", "Izlazak",
+				JOptionPane.YES_NO_CANCEL_OPTION);
+
+		if (opcija == JOptionPane.YES_OPTION)
+			System.exit(0);
+	}
+
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
