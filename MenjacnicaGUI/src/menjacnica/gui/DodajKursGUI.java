@@ -108,7 +108,7 @@ public class DodajKursGUI extends JFrame {
 						+ " Skraceni naziv: " + textFieldSkraceniNaziv.getText() + " Prodajni kurs: "
 						+ textFieldProdajni.getText() + " Kupovni kurs: " + textFieldKupovni.getText()
 						+ " Srednji kurs: " + textFieldSrednji.getText()+'\n';
-				menjacnica.textAreaStatus.append(s);
+				menjacnica.textAreaStatus.append("Dodat je kurs: "+s);
 				dispose();
 			}
 		});

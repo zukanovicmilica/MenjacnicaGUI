@@ -41,11 +41,12 @@ public class ObrisiKursGUI extends JFrame {
 		JButton btnObrisi = new JButton("Obrisi");
 		btnObrisi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String s = "Sifra: " + textFieldSifra.getText() + " Naziv: " + textFieldNaziv.getText()
+				String s= new String();
+				 s = "Sifra: " + textFieldSifra.getText() + " Naziv: " + textFieldNaziv.getText()
 						+ " Skraceni naziv: " + textFieldSkraceni.getText() + " Prodajni kurs: "
 						+ textFieldProdajni.getText() + " Kupovni kurs: " + textFieldKupovni.getText()
 						+ " Srednji kurs: " + textFieldSrednji.getText()+'\n';
-				menjacnica.
+				menjacnica.textAreaStatus.append("Obrisan je kurs: "+s);
 				dispose();
 			}
 		});

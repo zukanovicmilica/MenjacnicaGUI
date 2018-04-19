@@ -45,10 +45,10 @@ import java.awt.event.ActionEvent;
 
 public class MenjacnicaGUI extends JFrame {
 
+	public JTextArea textAreaStatus;
 	private JPanel contentPane;
 	private JTable table;
-	public JTextArea textAreaStatus;
-	MenjacnicaGUI menj=this;
+	MenjacnicaGUI menj = this;
 
 	/**
 	 * Launch the application.
@@ -73,9 +73,9 @@ public class MenjacnicaGUI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-					izlaz();
+				izlaz();
 			}
-			
+
 		});
 		setTitle("Menja\u010Dnica");
 		setIconImage(Toolkit.getDefaultToolkit()
@@ -95,7 +95,8 @@ public class MenjacnicaGUI extends JFrame {
 
 		JTextArea textAreaStatus = new JTextArea();
 		scrollPane_1.setViewportView(textAreaStatus);
-
+		this.textAreaStatus = textAreaStatus;
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
@@ -111,7 +112,7 @@ public class MenjacnicaGUI extends JFrame {
 
 				if (opcija == JFileChooser.APPROVE_OPTION) {
 					File f = fc.getSelectedFile();
-					textAreaStatus.append("Ucitan fajl: " + f.getAbsolutePath()+"\n");
+					textAreaStatus.append("Ucitan fajl: " + f.getAbsolutePath() + "\n");
 
 				}
 			}
@@ -130,7 +131,7 @@ public class MenjacnicaGUI extends JFrame {
 
 				if (opcija == JFileChooser.APPROVE_OPTION) {
 					File f = fc.getSelectedFile();
-					textAreaStatus.append("Sacuvan fajl: " + f.getAbsolutePath()+"\n");
+					textAreaStatus.append("Sacuvan fajl: " + f.getAbsolutePath() + "\n");
 				}
 			}
 		});
@@ -211,7 +212,7 @@ public class MenjacnicaGUI extends JFrame {
 		JMenuItem mntmIzvrsiZamenu = new JMenuItem("Izvr\u0161i zamenu");
 		mntmIzvrsiZamenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				IzvrsiZamenuGUI izg= new IzvrsiZamenuGUI(menj);
+				IzvrsiZamenuGUI izg = new IzvrsiZamenuGUI(menj);
 				izg.setVisible(true);
 			}
 		});
@@ -232,7 +233,7 @@ public class MenjacnicaGUI extends JFrame {
 		btnDodajKurs.setPreferredSize(new Dimension(110, 23));
 		panel.add(btnDodajKurs);
 
-		JButton btnObrisiKurs = new JButton("Obri\u0161i kurs");
+		JButton btnObrisiKurs = new JButton("Obrisi kurs");
 		btnObrisiKurs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ObrisiKursGUI okg = new ObrisiKursGUI(menj);
@@ -242,20 +243,20 @@ public class MenjacnicaGUI extends JFrame {
 		btnObrisiKurs.setPreferredSize(new Dimension(110, 23));
 		panel.add(btnObrisiKurs);
 
-		JButton btnIzvriZamenu = new JButton("Izvr\u0161i zamenu");
-		btnIzvriZamenu.addActionListener(new ActionListener() {
+		JButton btnIzvrsiZamenu = new JButton("Izvrsi zamenu");
+		btnIzvrsiZamenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				IzvrsiZamenuGUI izg = new IzvrsiZamenuGUI(menj);
 				izg.setVisible(true);
 			}
 		});
-		panel.add(btnIzvriZamenu);
+		panel.add(btnIzvrsiZamenu);
 
 	}
 
 	private void addWindowListener(WindowAdapter windowAdapter) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void izlaz() {
