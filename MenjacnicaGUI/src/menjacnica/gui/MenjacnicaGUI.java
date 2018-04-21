@@ -80,7 +80,7 @@ public class MenjacnicaGUI extends JFrame {
 		setTitle("Menja\u010Dnica");
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(MenjacnicaGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 681, 439);
 
 		contentPane = new JPanel();
@@ -251,11 +251,6 @@ public class MenjacnicaGUI extends JFrame {
 			}
 		});
 		panel.add(btnIzvrsiZamenu);
-
-	}
-
-	private void addWindowListener(WindowAdapter windowAdapter) {
-		// TODO Auto-generated method stub
 
 	}
 
